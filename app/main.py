@@ -70,16 +70,6 @@ async def read_own_items(current_user: UserInDB = Depends(get_current_active_use
     return [{"item_id": "Foo", "owner": current_user.username}]
 
 
-@app.delete('/api/user/delete/{user_name}', tags=['user'])  # в стадии разработки
-async def delete_user(user_name: str):
-    with db_session:
-        if User.exists(username=user_name):
-            User[user_name].delete()
-            commit()
-            return "Пользователь удалён"
-        return "Пользователя с таким именем не существует"
-
-
 # -----------------------------------------------------------------------------------------
 
 
