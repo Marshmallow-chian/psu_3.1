@@ -38,7 +38,7 @@ def get_user(user_name: str) -> Union[UserInDB, str]:  # ------------
 
 
 def authenticate_user(username: str, password: str) -> Union[UserInDB, Literal[False]]:  # --------------
-    user = get_user(username)  # сделать проверку на наличие пользователя
+    user = get_user(username)
     if isinstance(user, str):
         return False
     if not user:
@@ -48,7 +48,7 @@ def authenticate_user(username: str, password: str) -> Union[UserInDB, Literal[F
     return user
 
 
-def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):  # что на вход? ставит метку.
+def create_access_token(data: dict, expires_delta: Optional[timedelta] = None): # ставит метку
     to_encode = data.copy()
     if expires_delta:
         expire = datetime.utcnow() + expires_delta
@@ -87,7 +87,7 @@ async def get_current_active_user(current_user: User = Depends(get_current_user)
 
 
 @app.post("/token", response_model=Token)
-async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):  # как проверяет?
+async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
     user = authenticate_user(form_data.username, form_data.password)  # UserInDB or False
     if not user:
         raise HTTPException(
