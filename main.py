@@ -2,7 +2,7 @@ import os.path
 import uvicorn
 from pony.orm import db_session, commit
 from scheme import ProductsOut, ProducerOut, NewProducts, EditProducts, NewProducer, EditProducer, CoolLvL
-from scheme import UserInDB, UserOut, UserEntr, Auth
+from scheme import UserInDB, UserOut, UserEntr
 from models import db, Producer, Products, User
 from s_main import *
 from s_scheme import *
@@ -72,7 +72,7 @@ async def read_own_items(current_user: UserInDB = Depends(get_current_active_use
 
 
 @app.post("/token", response_model=Token, tags=['token'])
-async def login_for_access_token(form_data: Auth = Depends()):
+async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
     user = authenticate_user(form_data.username, form_data.password)  # UserInDB or False
     if not user:
         raise HTTPException(
