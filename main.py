@@ -1,4 +1,4 @@
-'''import os.path
+import os.path
 from fastapi import FastAPI, Body, Depends, status, HTTPException
 import uvicorn
 from datetime import timedelta
@@ -29,7 +29,7 @@ async def start_app():
     db.bind(provider='sqlite', filename=my_db, create_db=create_db)
     db.generate_mapping(create_tables=create_db)
 
-
+'''
 @app.post('/api/user/new', tags=['user'])
 async def new_user(user: UserEntr = Body(...)):
     with db_session:
@@ -87,7 +87,7 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
         data={"sub": user.username}, expires_delta=access_token_expires
     )
     return {"access_token": access_token, "token_type": "bearer"}
-
+'''
 
 # -----------------------------------------------------------------------------------------
 
@@ -238,17 +238,7 @@ async def sorted_products(item_id: int):  # 13 +
             pr = producer.products.select().order_by(Products.price)[::]
             return ProducerOut(**(producer.to_dict() | {'products': pr}))
         return 'Производителя с таким id не существует'
-'''
 
-import uvicorn
-from fastapi import FastAPI
-
-app = FastAPI()
-
-
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="localhost", port=8000, reload=True)
