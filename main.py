@@ -121,7 +121,7 @@ async def get_product(item_id: int):  # 2 +
         else:
             return 'товара с таким id не существует'
 
-
+'''
 @app.post('/api/product/new', tags=['products'])
 async def new_product(n_product: NewProducts = Body(...), current_user: UserInDB = Depends(get_current_active_user)):  # 3 +
     with db_session:
@@ -162,7 +162,7 @@ async def delete_product(item_id: int, current_user: UserInDB = Depends(get_curr
             return "Объект удалён"
         return "производителя с таким id не существует"
 
-
+'''
 # ----------------------------------------------------------------------------------------
 
 
