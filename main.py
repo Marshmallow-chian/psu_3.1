@@ -57,12 +57,12 @@ async def get_all_users():
             all_users.append(UserOut.from_orm(i))
     return all_users
 
-'''
+
 @app.get("/users/me/", response_model=UserOut, tags=['user'])
 async def read_users_me(current_user: UserInDB = Depends(get_current_active_user)):
     return current_user
 
-
+'''
 @app.get("/users/me/items/", tags=['user'])
 async def read_own_items(current_user: UserInDB = Depends(get_current_active_user)):
     return [{"item_id": "Foo", "owner": current_user.username}]
