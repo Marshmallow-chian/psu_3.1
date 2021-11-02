@@ -43,9 +43,9 @@ async def new_user(user: UserEntr = Body(...)):
         password = n_user['hashed_password']
         n_user['hashed_password'] = get_password_hash(password)
 
-        #User(**n_user)
+        #UserOut(**n_user)
         commit()
-        return UserOut.from_orm(n_user)
+        return user
 
 '''
 @app.get('/api/user', tags=['user'])
