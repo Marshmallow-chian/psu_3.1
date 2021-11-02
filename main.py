@@ -45,7 +45,7 @@ async def new_user(user: UserEntr = Body(...)):
 
         User(**n_user)
         commit()
-        return UserOut(user)
+        return UserOut.from_orm(user)
 
 '''
 @app.get('/api/user', tags=['user'])
