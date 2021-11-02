@@ -28,15 +28,6 @@ async def start_app():
     db.bind(provider='sqlite', filename=my_db, create_db=create_db)
     db.generate_mapping(create_tables=create_db)
 
-@app.delete('/api/product/delete/{item_id}', tags=['products'])
-async def delete_product(item_id: int, current_user: UserInDB = Depends(get_current_active_user)):
-    with db_session:
-        if Products.exists(id=item_id):
-            Products[item_id].delete()
-            commit()
-            return "Объект удалён"
-        return "производителя с таким id не существует"
-
 '''
 @app.post('/api/user/new', tags=['user'])
 async def new_user(user: UserEntr = Body(...)):
@@ -129,7 +120,7 @@ async def get_product(item_id: int):
         else:
             return 'товара с таким id не существует'
 
-'''
+
 @app.post('/api/product/new', tags=['products'])
 async def new_product(n_product: NewProducts = Body(...), current_user: UserInDB = Depends(get_current_active_user)):
     with db_session:
@@ -161,8 +152,15 @@ async def edit_product(item_id: int, edit_pr: EditProducts = Body(...),
             return ProductsOut.from_orm(Products[item_id])
         return 'товара с таким id не существует'
 
-'''
 
+@app.delete('/api/product/delete/{item_id}', tags=['products'])
+async def delete_product(item_id: int, current_user: UserInDB = Depends(get_current_active_user)):
+    with db_session:
+        if Products.exists(id=item_id):
+            Products[item_id].delete()
+            commit()
+            return "Объект удалён"
+        return "производителя с таким id не существует"
 
 
 # ----------------------------------------------------------------------------------------
