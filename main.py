@@ -47,7 +47,7 @@ async def new_user(user: UserEntr = Body(...)):
         commit()
         return UserOut.from_orm(user)
 
-'''
+
 @app.get('/api/user', tags=['user'])
 async def get_all_users():
     with db_session:
@@ -57,7 +57,7 @@ async def get_all_users():
             all_users.append(UserOut.from_orm(i))
     return all_users
 
-
+'''
 @app.get("/users/me/", response_model=UserOut, tags=['user'])
 async def read_users_me(current_user: UserInDB = Depends(get_current_active_user)):
     return current_user
