@@ -8,9 +8,18 @@ from passlib.context import CryptContext
 from security.scheme import Token, TokenData
 from scheme import UserInDB, UserOut
 from models import User
+from dotenv import load_dotenv
+from pathlib import Path
+import os
 
 # TODO: add .env
-SECRET_KEY = "09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7"  # .env file
+
+load_dotenv()
+env_path = Path('.')/'.env'
+load_dotenv(dotenv_path=env_path)
+
+SECRET_KEY = os.getenv("SECRET_KEY")
+
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
@@ -48,7 +57,7 @@ def authenticate_user(username: str, password: str) -> Union[UserInDB, Literal[F
     return user
 
 
-def create_access_token(data: dict, expires_delta: Optional[timedelta] = None): # ставит метку
+def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):  # ставит метку
     to_encode = data.copy()
     if expires_delta:
         expire = datetime.utcnow() + expires_delta
@@ -83,7 +92,6 @@ async def get_current_active_user(current_user: User = Depends(get_current_user)
     if current_user.disabled:
         raise HTTPException(status_code=400, detail="Inactive user")
     return current_user
-
 
 
 @app.post("/token", response_model=Token)

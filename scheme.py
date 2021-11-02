@@ -109,7 +109,7 @@ class SortedProductsForProducer(BaseModel):
     class Config:
         orm_mode = True
 
-'''
+
 class UserEntr(BaseModel):
     id: int
     username: str
@@ -129,4 +129,3 @@ class UserOut(BaseModel):
 
 class UserInDB(UserOut):
     hashed_password: str
-'''
