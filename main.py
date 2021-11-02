@@ -66,7 +66,7 @@ async def read_users_me(current_user: UserInDB = Depends(get_current_active_user
 @app.get("/users/me/items/", tags=['user'])
 async def read_own_items(current_user: UserInDB = Depends(get_current_active_user)):
     return [{"item_id": "Foo", "owner": current_user.username}]
-'''
+
 
 # -----------------------------------------------------------------------------------------
 
@@ -88,7 +88,7 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
 
 
 # -----------------------------------------------------------------------------------------
-'''
+
 
 @app.get('/api/products', tags=['products'])
 async def get_all_products():
