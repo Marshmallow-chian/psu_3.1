@@ -121,6 +121,7 @@ class UserOut(BaseModel):
     id: int
     username: str
     full_name: str
+    disabled: Optional[bool] = None
 
     class Config:
         orm_mode = True

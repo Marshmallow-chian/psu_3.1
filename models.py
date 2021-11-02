@@ -23,3 +23,4 @@ class User(db.Entity):
     username = Required(str, unique=True)
     full_name = Required(str, unique=False)
     hashed_password = Required(str, unique=False)
+    disabled: Required(bool, unique=False)

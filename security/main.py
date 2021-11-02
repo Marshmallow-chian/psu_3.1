@@ -101,7 +101,7 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     )
     return {"access_token": access_token, "token_type": "bearer"}
 
-'''
+
 @app.get("/users/me/", response_model=UserOut)
 async def read_users_me(current_user: UserOut = Depends(get_current_active_user)):
     return current_user
@@ -110,7 +110,7 @@ async def read_users_me(current_user: UserOut = Depends(get_current_active_user)
 @app.get("/users/me/items/")
 async def read_own_items(current_user: UserOut = Depends(get_current_active_user)):
     return [{"item_id": "Foo", "owner": current_user.username}]
-'''
+
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="localhost", port=8000, reload=True)
