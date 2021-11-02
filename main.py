@@ -1,8 +1,8 @@
 import os.path
-from fastapi import FastAPI, Body #, Depends#, status, HTTPException
+from fastapi import FastAPI, Body, Depends, status, HTTPException
 import uvicorn
 from pony.orm import db_session, commit
-from models import db, Producer, Products#, User
+from models import db, Producer, Products, User
 from scheme import ProductsOut, ProducerOut, NewProducts, EditProducts, NewProducer, EditProducer, CoolLvL
 from scheme import UserInDB, UserOut, UserEntr
 from s_main import *
