@@ -2,7 +2,7 @@ import os.path
 import uvicorn
 from pony.orm import db_session, commit
 from scheme import ProductsOut, ProducerOut, NewProducts, EditProducts, NewProducer, EditProducer, CoolLvL
-from scheme import UserInDB, UserOut, UserEntr
+from scheme import UserInDB, UserOut, UserEntr, Auth
 from models import db, Producer, Products, User
 from s_main import *
 from s_scheme import *
@@ -72,8 +72,8 @@ async def read_own_items(current_user: UserInDB = Depends(get_current_active_use
 
 
 @app.post("/token", response_model=Token, tags=['token'])
-async def login_for_access_token(i: int): #,form_data: OAuth2PasswordRequestForm = Depends()):
-    '''user = authenticate_user(form_data.username, form_data.password)  # UserInDB or False
+async def login_for_access_token(form_data: Auth = Depends()):
+    user = authenticate_user(form_data.username, form_data.password)  # UserInDB or False
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -82,8 +82,7 @@ async def login_for_access_token(i: int): #,form_data: OAuth2PasswordRequestForm
         )
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)  # 30 min
     access_token = create_access_token(data={"sub": user.username}, expires_delta=access_token_expires)
-    return {"access_token": access_token, "token_type": "bearer"}'''
-    return i
+    return {"access_token": access_token, "token_type": "bearer"}
 
 
 # -----------------------------------------------------------------------------------------

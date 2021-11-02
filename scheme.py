@@ -129,3 +129,8 @@ class UserOut(BaseModel):
 
 class UserInDB(UserOut):
     hashed_password: str
+
+
+class Auth(BaseModel):
+    username: str
+    password: str
