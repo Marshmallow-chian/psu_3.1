@@ -101,7 +101,7 @@ async def get_all_products():  # 1 +
             all_products.append(ProductsOut.from_orm(i))
     return all_products
 
-
+'''
 @app.get('/api/product/get_average_products', tags=['products'])
 async def get_average(minimum: int, maximum: int):  # 12-
     with db_session:
@@ -120,7 +120,7 @@ async def get_product(item_id: int):  # 2 +
             return ProductsOut.from_orm(product)
         else:
             return 'товара с таким id не существует'
-
+'''
 '''
 @app.post('/api/product/new', tags=['products'])
 async def new_product(n_product: NewProducts = Body(...), current_user: UserInDB = Depends(get_current_active_user)):  # 3 +
@@ -165,7 +165,7 @@ async def delete_product(item_id: int, current_user: UserInDB = Depends(get_curr
 '''
 # ----------------------------------------------------------------------------------------
 
-
+'''
 @app.get('/api/producer/get_cool_producers', tags=['producers'])
 async def get_cool(cool_level: int):  # 11
     with db_session:
@@ -239,6 +239,6 @@ async def sorted_products(item_id: int):  # 13 +
             return ProducerOut(**(producer.to_dict() | {'products': pr}))
         return 'Производителя с таким id не существует'
 
-
+'''
 if __name__ == "__main__":
     uvicorn.run("main:app", host="localhost", port=8000, reload=True)
