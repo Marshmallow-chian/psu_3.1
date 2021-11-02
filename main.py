@@ -86,9 +86,9 @@ try:
             access_token = create_access_token(data={"sub": user.username}, expires_delta=access_token_expires)
             return {"access_token": access_token, "token_type": "bearer"}
         except Exception:
-            '1'
+            '1 ошибка внутри'
 except Exception:
-    '2'
+    '2 ошибка снаружи'
 # -----------------------------------------------------------------------------------------
 
 
