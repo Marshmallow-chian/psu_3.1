@@ -29,7 +29,7 @@ async def start_app():
     db.bind(provider='sqlite', filename=my_db, create_db=create_db)
     db.generate_mapping(create_tables=create_db)
 
-
+'''
 @app.post('/api/user/new', tags=['user'])
 async def new_user(user: UserEntr = Body(...)):
     with db_session:
@@ -90,7 +90,7 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
 
 
 # -----------------------------------------------------------------------------------------
-
+'''
 
 @app.get('/api/products', tags=['products'])
 async def get_all_products():
@@ -121,7 +121,7 @@ async def get_product(item_id: int):
         else:
             return 'товара с таким id не существует'
 
-
+'''
 @app.post('/api/product/new', tags=['products'])
 async def new_product(n_product: NewProducts = Body(...), current_user: UserInDB = Depends(get_current_active_user)):
     with db_session:
@@ -163,7 +163,7 @@ async def delete_product(item_id: int, current_user: UserInDB = Depends(get_curr
             return "Объект удалён"
         return "производителя с таким id не существует"
 
-
+'''
 # ----------------------------------------------------------------------------------------
 
 
