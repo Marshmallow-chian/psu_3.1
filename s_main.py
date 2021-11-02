@@ -29,7 +29,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 app = FastAPI()
 
-
+print('начало')
 def verify_password(plain_password, hashed_password):  # проверяет правильность пароля, True/False
     return pwd_context.verify(plain_password, hashed_password)
 
@@ -118,7 +118,5 @@ async def read_users_me(current_user: UserOut = Depends(get_current_active_user)
 @app.get("/users/me/items/")
 async def read_own_items(current_user: UserOut = Depends(get_current_active_user)):
     return [{"item_id": "Foo", "owner": current_user.username}]
+print('конец')
 
-
-if __name__ == "__main__":
-    uvicorn.run("main:app", host="localhost", port=8000, reload=True)

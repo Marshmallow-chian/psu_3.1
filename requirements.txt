@@ -4,5 +4,4 @@ pydantic[email]
 uvicorn
 gunicorn
 python-jose[cryptography]
-jose
 passlib[bcrypt]
