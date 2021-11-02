@@ -239,7 +239,6 @@ async def sorted_products(item_id: int):  # 13 +
             return ProducerOut(**(producer.to_dict() | {'products': pr}))
         return 'Производителя с таким id не существует'
 
-'''
+
 if __name__ == "__main__":
     uvicorn.run("main:app", host="localhost", port=8000, reload=True)
-'''
