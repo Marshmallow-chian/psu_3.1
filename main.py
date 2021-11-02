@@ -29,7 +29,7 @@ async def start_app():
     db.generate_mapping(create_tables=create_db)
 
 @app.delete('/api/product/delete/{item_id}', tags=['products'])
-async def delete_product(item_id: int, current_user: UserInDB = Depends(get_current_active_user)):
+async def delete_product(item_id: int): #, current_user: UserInDB = Depends(get_current_active_user)):
     with db_session:
         if Products.exists(id=item_id):
             Products[item_id].delete()
