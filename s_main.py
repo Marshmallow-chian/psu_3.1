@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 from typing import Optional, Union, Literal
-#import uvicorn
+import uvicorn
 from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
@@ -119,5 +119,5 @@ async def read_own_items(current_user: UserOut = Depends(get_current_active_user
     return [{"item_id": "Foo", "owner": current_user.username}]
 
 
-#if __name__ == "__main__":
-#    uvicorn.run("main:app", host="localhost", port=8000, reload=True)
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="localhost", port=8000, reload=True)
