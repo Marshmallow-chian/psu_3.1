@@ -39,14 +39,13 @@ async def new_user(user: UserEntr = Body(...)):
 
         if User.exists(username=user.username):
             return 'пользователь с таким именем уже существует'
-        print(n_user)
+
         password = n_user['hashed_password']
         n_user['hashed_password'] = get_password_hash(password)
-        print(n_user)
 
-        User(**n_user)
+        #User(**n_user)
         commit()
-        return user
+        return UserOut.from_orm(n_user)
 
 '''
 @app.get('/api/user', tags=['user'])
