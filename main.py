@@ -1,15 +1,15 @@
 import os.path
-from fastapi import FastAPI, Body #, Depends, status, HTTPException
+from fastapi import FastAPI, Body , Depends#, status, HTTPException
 import uvicorn
 from pony.orm import db_session, commit
 from models import db, Producer, Products#, User
 from scheme import ProductsOut, ProducerOut, NewProducts, EditProducts, NewProducer, EditProducer, CoolLvL
-'''from scheme import UserOut, UserEntr, UserInDB
-from s_main import get_current_active_user, authenticate_user, create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES
-from s_main import get_password_hash
-from s_scheme import Token
-from datetime import timedelta
-from fastapi.security import OAuth2PasswordRequestForm'''
+from scheme import UserInDB #UserOut, UserEntr
+from s_main import get_current_active_user #, authenticate_user, create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES
+#from s_main import get_password_hash
+#from s_scheme import Token
+#from datetime import timedelta
+#from fastapi.security import OAuth2PasswordRequestForm
 
 # использовать exception
 
@@ -153,7 +153,7 @@ async def edit_product(item_id: int, edit_pr: EditProducts = Body(...),
             return ProductsOut.from_orm(Products[item_id])
         return 'товара с таким id не существует'
 
-
+'''
 @app.delete('/api/product/delete/{item_id}', tags=['products'])
 async def delete_product(item_id: int, current_user: UserInDB = Depends(get_current_active_user)):
     with db_session:
@@ -163,7 +163,7 @@ async def delete_product(item_id: int, current_user: UserInDB = Depends(get_curr
             return "Объект удалён"
         return "производителя с таким id не существует"
 
-'''
+
 # ----------------------------------------------------------------------------------------
 
 
