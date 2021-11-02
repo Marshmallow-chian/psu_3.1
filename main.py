@@ -98,10 +98,10 @@ from pony.orm import db_session, commit
 from scheme import ProductsOut, ProducerOut, NewProducts, EditProducts, NewProducer, EditProducer, CoolLvL
 from scheme import UserInDB, UserOut, UserEntr
 from models import db, Producer, Products, User
-from s_main import *
-from s_scheme import *
-from datetime import timedelta
-from fastapi.security import OAuth2PasswordRequestForm
+#from s_main import *
+#from s_scheme import *
+#from datetime import timedelta
+#from fastapi.security import OAuth2PasswordRequestForm
 from fastapi import FastAPI, Body, Depends, status, HTTPException
 
 # использовать exception
