@@ -28,7 +28,7 @@ async def start_app():
     db.bind(provider='sqlite', filename=my_db, create_db=create_db)
     db.generate_mapping(create_tables=create_db)
 
-'''
+
 @app.post('/api/user/new', tags=['user'])
 async def new_user(user: UserEntr = Body(...)):
     with db_session:
@@ -48,7 +48,7 @@ async def new_user(user: UserEntr = Body(...)):
         commit()
         return user
 
-
+'''
 @app.get('/api/user', tags=['user'])
 async def get_all_users():
     with db_session:
