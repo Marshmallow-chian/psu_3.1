@@ -40,7 +40,7 @@ async def new_user(user: UserEntr = Body(...)):
 
         if User.exists(username=user.username):
             return 'пользователь с таким именем уже существует'
-
+        n_user['hashed_password'] = n_user.pop('password')
         password = n_user['hashed_password']
         n_user['hashed_password'] = get_password_hash(password)
 

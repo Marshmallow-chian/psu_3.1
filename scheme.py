@@ -114,7 +114,7 @@ class UserEntr(BaseModel):
     id: int
     username: str
     full_name: str
-    hashed_password: str
+    password: str
 
 
 class UserOut(BaseModel):
