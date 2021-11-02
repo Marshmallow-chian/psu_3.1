@@ -5,7 +5,7 @@ from pony.orm import db_session, commit
 from models import db, Producer, Products#, User
 from scheme import ProductsOut, ProducerOut, NewProducts, EditProducts, NewProducer, EditProducer, CoolLvL
 from scheme import UserInDB #UserOut, UserEntr
-#from s_main import *
+from s_main import *
 from s_scheme import *
 #from datetime import timedelta
 #from fastapi.security import OAuth2PasswordRequestForm
