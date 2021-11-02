@@ -5,7 +5,7 @@ from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
 from passlib.context import CryptContext
-from security.scheme import Token, TokenData
+from s_scheme import Token, TokenData
 from scheme import UserInDB, UserOut
 from models import User
 from dotenv import load_dotenv

@@ -7,9 +7,9 @@ from pony.orm import db_session, commit
 from models import db, Producer, Products, User
 from scheme import ProductsOut, ProducerOut, NewProducts, EditProducts, NewProducer, EditProducer, CoolLvL
 from scheme import UserOut, UserEntr, UserInDB
-from security.main import get_current_active_user, authenticate_user, create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES
-from security.main import get_password_hash
-from security.scheme import Token
+from s_main import get_current_active_user, authenticate_user, create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES
+from s_main import get_password_hash
+from s_scheme import Token
 
 # использовать exception
 
