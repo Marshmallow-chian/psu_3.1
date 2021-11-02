@@ -120,5 +120,5 @@ async def read_own_items(current_user: UserOut = Depends(get_current_active_user
     return [{"item_id": "Foo", "owner": current_user.username}]
 
 
-# if __name__ == "__main__":
+#if __name__ == "__main__":
 #    uvicorn.run("main:app", host="localhost", port=8000, reload=True)
