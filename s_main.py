@@ -8,17 +8,18 @@ from passlib.context import CryptContext
 from s_scheme import Token, TokenData
 from scheme import UserInDB, UserOut
 from models import User
-from dotenv import load_dotenv
-from pathlib import Path
-import os
+#from dotenv import load_dotenv
+#from pathlib import Path
+#import os
 
 # TODO: add .env
 
-load_dotenv()
+'''load_dotenv()
 env_path = Path('.')/'.env'
 load_dotenv(dotenv_path=env_path)
 
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = os.getenv("SECRET_KEY")'''
+SECRET_KEY = "09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
